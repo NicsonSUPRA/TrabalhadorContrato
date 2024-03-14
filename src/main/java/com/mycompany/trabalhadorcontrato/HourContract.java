@@ -4,6 +4,7 @@
  */
 package com.mycompany.trabalhadorcontrato;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -14,6 +15,7 @@ public class HourContract {
     private Date date;
     private Double valuePerHour;
     private Integer hour;
+    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public HourContract(Date date, Double valuePerHour, Integer hour) {
         this.date = date;

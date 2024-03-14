@@ -5,6 +5,7 @@
 package com.mycompany.trabalhadorcontrato;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -15,12 +16,19 @@ public class Worker {
     private String name;
     private WorkerLevel level;
     private Double baseSalary;
+    private Department department;
     List<HourContract> contractList = new ArrayList<HourContract>();
     
-    public Worker(String name, WorkerLevel level, Double baseSalary) {
+    public Worker(String name, WorkerLevel level, Double baseSalary, String department) {
         this.name = name;
         this.level = level;
         this.baseSalary = baseSalary;
+        this.department = new Department(department);
+        
+    }
+    
+    public String getName() {
+        return name;
     }
     
     public void addContract(HourContract contract) {
@@ -29,10 +37,25 @@ public class Worker {
     
     public void removeContract(HourContract contract) {
         for(HourContract contractInList : contractList) {
-            if(contract.getDate() == contractInList.getDate() && contract.getValuePerHour() == contractInList.getValuePerHour() && contract.getHour() == contractInList.getHour()) {
-                contractList.remove(contractInList);
-            }
+            contractList.remove(contractInList);
         }
     }
+    
+    public Double income(Integer year, Integer month) {
+        Double sum = baseSalary;
+        Calendar calendar = Calendar.getInstance();
+        for(HourContract contract : contractList) {
+            calendar.setTime(contract.getDate());
+            int contractYear = calendar.get(Calendar.YEAR);
+            int contractMonth = calendar.get(Calendar.MONTH) + 1;
+            if(year == contractYear && month == contractMonth) {
+                sum+= contract.totalValue();
+            }
+            
+        }
+        return sum;
+    }
+    
+    
     
 }
