@@ -24,13 +24,6 @@ public class TrabalhadorContrato {
         Scanner sc = new Scanner(System.in);
         SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
         
-//        Worker teste = new Worker("Nicson", WorkerLevel.valueOf("MID_LEVEL"), 1200.00);
-//        System.out.println(teste);
-//        HourContract contratoTeste = new HourContract(fmt.parse("20/08/2022"), 50.00, 20);
-//        teste.addContract(contratoTeste);
-//        //System.out.println(teste.income(2022, 8));
-//        System.out.println(teste.income(2022, 8));
-        
         
         
         
